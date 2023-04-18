@@ -4,7 +4,7 @@ object ScreenCreateArchive {
 
     fun createArchive() {
         while (true) {
-            println("Введите название архива")
+            println("Введите название Архива")
             val title = Scanner(System.`in`).nextLine()
             val notes: MutableList<Note> = mutableListOf()
             val archive = Archive(title, notes)
