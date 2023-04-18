@@ -1,5 +1,0 @@
-class ScreenNavigation {
-    fun navigation () {
-
-    }
-}

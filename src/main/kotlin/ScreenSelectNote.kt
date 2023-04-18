@@ -8,7 +8,10 @@ object ScreenSelectNote {
                 println("Список заметок:\n0.Создать заметку\n${printNotes(archive)}\n${archive.notes.size + 1}.Назад")
                 try {
                     when (val choice = Scanner(System.`in`).nextLine().toInt()) {
-                        0 -> ScreenCreateNote.createNote(archive)
+                        0 -> {
+                            ScreenCreateNote.createNote(archive)
+                            break
+                        }
                         in 1..archive.notes.size -> ScreenViewNote.viewNote(
                             archive,
                             archive.notes[choice - 1]
