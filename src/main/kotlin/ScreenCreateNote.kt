@@ -1,19 +1,19 @@
 import java.util.Scanner
 
-object ScreenCreateNote {
+object ScreenCreateNote: ScreenCreate() {
 
-    fun createNote(archive: Archive) {
-        do {
+    override fun create(archive: Archive?) {
+        while (true) {
             println("0.Создать заметку\n1.Назад")
             try {
                 when (Scanner(System.`in`).nextLine().toInt()) {
                     0 -> {
                         println("Введите название заметки")
-                        var title = Scanner(System.`in`).nextLine()
+                        val title = Scanner(System.`in`).nextLine()
                         println("Введите текст заметки")
-                        var text = Scanner(System.`in`).nextLine()
+                        val text = Scanner(System.`in`).nextLine()
                         val note = Note(title, text)
-                        archive.notes.add(note)
+                        archive?.notes?.add(note)
                         println("Создана заметка ${note.title.uppercase()}")
                     }
                     1 -> break
@@ -21,7 +21,7 @@ object ScreenCreateNote {
                 }
             }
             catch (e: NumberFormatException) {println("для выбора введите 0 или 1")}
-        } while (true)
+        }
         ScreenSelectNote.select(archive)
     }
 }

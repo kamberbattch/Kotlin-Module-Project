@@ -1,15 +1,15 @@
 import java.util.Scanner
 
-object ScreenSelectNote {
+object ScreenSelectNote: ScreenSelect() {
 
-    fun select(archive: Archive?) {
+    override fun select(archive: Archive?) {
         while (true) {
             if (archive != null) {
-                println("Список заметок:\n0.Создать заметку\n${printNotes(archive)}\n${archive.notes.size + 1}.Назад")
+                println("Список заметок:\n0.Создать заметку\n${print(archive)}\n${archive.notes.size + 1}.Назад")
                 try {
                     when (val choice = Scanner(System.`in`).nextLine().toInt()) {
                         0 -> {
-                            ScreenCreateNote.createNote(archive)
+                            ScreenCreateNote.create(archive)
                             break
                         }
                         in 1..archive.notes.size -> ScreenViewNote.viewNote(
@@ -27,9 +27,12 @@ object ScreenSelectNote {
         ScreenSelectArchive.select()
     }
 
-    private fun printNotes(archive: Archive): String {
+    override fun print(archive: Archive?): String {
         var string = ""
-        for (note in archive.notes) string += ("${archive.notes.indexOf(note)+1}.${note.title}\n")
+        if (archive != null) {
+            for (note in archive.notes) string += "${archive.notes.indexOf(note)+1}.${note.title}\n"
+        }
         return string
     }
+
 }

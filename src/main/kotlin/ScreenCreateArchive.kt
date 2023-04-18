@@ -1,8 +1,8 @@
 import java.util.Scanner
 
-object ScreenCreateArchive {
+object ScreenCreateArchive: ScreenCreate() {
 
-    fun createArchive() {
+    override fun create(archive: Archive?) {
         while (true) {
             println("Введите название Архива")
             val title = Scanner(System.`in`).nextLine()
