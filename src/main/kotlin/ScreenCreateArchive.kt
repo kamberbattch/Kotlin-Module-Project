@@ -3,9 +3,9 @@ import java.util.Scanner
 object ScreenCreateArchive {
 
     fun createArchive() {
-        do {
+        while (true) {
             println("Введите название архива")
-            var title = Scanner(System.`in`).nextLine()
+            val title = Scanner(System.`in`).nextLine()
             val notes: MutableList<Note> = mutableListOf()
             val archive = Archive(title, notes)
             ScreenSelectArchive.archives.add(archive)
@@ -18,7 +18,7 @@ object ScreenCreateArchive {
                 }
             }
             catch (e: NumberFormatException) {println("для выбора введите 0 или 1")}
-        } while (true)
+        }
         ScreenSelectArchive.select()
     }
 }
