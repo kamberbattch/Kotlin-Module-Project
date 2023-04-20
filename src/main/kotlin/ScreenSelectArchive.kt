@@ -10,9 +10,12 @@ object ScreenSelectArchive: ScreenSelect() {
                 when (val choice = Scanner(System.`in`).nextLine().toInt()) {
                     0 -> {
                         ScreenCreateArchive.create(archive = null)
-                        break
+//                        break
                     }
-                    in 1..archives.size -> ScreenSelectNote.select(archive = archives[choice-1])
+                    in 1..archives.size -> {
+                        ScreenSelectNote.select(archive = archives[choice-1])
+//                        break
+                    }
                     archives.size+1 -> break
                     else -> println("для выбора введите цифры от 0 до ${archives.size+1}")
                 }

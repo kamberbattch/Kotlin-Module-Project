@@ -3,18 +3,27 @@ import java.util.Scanner
 object ScreenCreateNote: ScreenCreate() {
 
     override fun create(archive: Archive?) {
+
         while (true) {
-            println("0.Создать заметку\n1.Назад")
+            println("\nВведите название заметки")
+            val title = Scanner(System.`in`).nextLine()
+            println("Введите текст заметки")
+            val text = Scanner(System.`in`).nextLine()
+            val note = Note(title, text)
+            archive?.notes?.add(note)
+            println("Создана заметка ${note.title.uppercase()}")
+            println("0.Создать ещё заметку\n1.Назад")
             try {
                 when (Scanner(System.`in`).nextLine().toInt()) {
                     0 -> {
-                        println("Введите название заметки")
-                        val title = Scanner(System.`in`).nextLine()
-                        println("Введите текст заметки")
-                        val text = Scanner(System.`in`).nextLine()
-                        val note = Note(title, text)
-                        archive?.notes?.add(note)
-                        println("Создана заметка ${note.title.uppercase()}")
+//                        println("Введите название заметки")
+//                        val title = Scanner(System.`in`).nextLine()
+//                        println("Введите текст заметки")
+//                        val text = Scanner(System.`in`).nextLine()
+//                        val note = Note(title, text)
+//                        archive?.notes?.add(note)
+//                        println("Создана заметка ${note.title.uppercase()}")
+                        continue
                     }
                     1 -> break
                     else -> println("для выбора введите 0 или 1")
@@ -22,6 +31,6 @@ object ScreenCreateNote: ScreenCreate() {
             }
             catch (e: NumberFormatException) {println("для выбора введите 0 или 1")}
         }
-        ScreenSelectNote.select(archive)
+//        ScreenSelectNote.select(archive)
     }
 }
