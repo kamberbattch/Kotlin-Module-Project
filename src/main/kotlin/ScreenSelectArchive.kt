@@ -8,14 +8,8 @@ object ScreenSelectArchive: ScreenSelect() {
             println("0.Создать архив\nСписок архивов:\n${print()}\n${archives.size+1}.Выход")
             try {
                 when (val choice = Scanner(System.`in`).nextLine().toInt()) {
-                    0 -> {
-                        ScreenCreateArchive.create(archive = null)
-//                        break
-                    }
-                    in 1..archives.size -> {
-                        ScreenSelectNote.select(archive = archives[choice-1])
-//                        break
-                    }
+                    0 -> ScreenCreateArchive.create(archive = null)
+                    in 1..archives.size -> ScreenSelectNote.select(archive = archives[choice-1])
                     archives.size+1 -> break
                     else -> println("для выбора введите цифры от 0 до ${archives.size+1}")
                 }

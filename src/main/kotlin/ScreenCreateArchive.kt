@@ -19,6 +19,5 @@ object ScreenCreateArchive: ScreenCreate() {
             }
             catch (e: NumberFormatException) {println("для выбора введите 0 или 1")}
         }
-//        ScreenSelectArchive.select()
     }
 }
