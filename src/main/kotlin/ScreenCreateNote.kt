@@ -3,7 +3,7 @@ import java.util.Scanner
 object ScreenCreateNote: ScreenCreate() {
 
     override fun create(archive: Archive?) {
-        while (true) {
+        while (running) {
             println("\nВведите название заметки")
             val title = Scanner(System.`in`).nextLine()
             println("Введите текст заметки")
